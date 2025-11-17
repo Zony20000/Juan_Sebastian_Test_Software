@@ -1,6 +1,6 @@
 import pytest
 import random
-from App.exercise_random import *
+from App.Execersice_4.exercise_random import *
 
 #Pruebas de Regresion
 

@@ -1,6 +1,6 @@
 import pytest
 import random
-from App.armstrong import ArmStrong as ars
+from App.Execersice_1.armstrong import ArmStrong as ars
 
 def test_armstrong_real():
     # Arrange (Preparación)

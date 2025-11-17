@@ -1,5 +1,5 @@
 import pytest
-from App.login import *
+from App.Execersice_2.login import *
 
 # Set BD - lo escribi en ingles por que en espaniol se escribe raro
 # el decorador de pytest ayuda a que esto se vuelva un parametro global/base para las pruebas consiguiente y se puedan usar, como un parametro a recibir evitando conflictos

@@ -1,4 +1,4 @@
-from App.Shopping import *
+from App.Execersice_3.Shopping import *
 import pytest
 
 def test_complete_purchase_system_flow():
