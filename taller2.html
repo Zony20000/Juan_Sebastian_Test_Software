@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Diseño de Casos de Prueba</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
+        h1, h2, h3 { color: #2C3E50; text-align: center; } /* Centrar h1 y h2 */
+        pre { background-color: #F8F9FA; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        code { 
+            font-family: 'Courier New', Courier, monospace; 
+            color: #2C3E50; 
+        }
+        .python {
+            background-color: #F5F5F5; /* Color de fondo para Python */
+            color: #333; /* Color de texto para Python */
+            border-left: 4px solid #3498DB; /* Borde azul a la izquierda */
+        }
+        .php {
+            background-color: #FAFAFA; /* Color de fondo para PHP */
+            color: #333; /* Color de texto para PHP */
+            border-left: 4px solid #E67E22; /* Borde naranja a la izquierda */
+        }
+        .cpp {
+            background-color: #FAFAFA; /* Color de fondo para C++ */
+            color: #333; /* Color de texto para C++ */
+            border-left: 4px solid #9B59B6; /* Borde púrpura a la izquierda */
+        }
+    </style>
+</head>
+<body>
+    <h1>UNIVERSIDAD ANTONIO NARIÑO SEDE SUR</h1>
+    <h2>INGENIERÍA DE SISTEMAS Y COMPUTACIÓN</h2>
+    
+    <h3>Datos de identificación</h3>
+    <ul>
+        <li>Asignatura: Calidad de Software</li>
+        <li>Guía: 2</li>
+        <li>Unidad temática: Pruebas de Software</li>
+        <li>Periodo académico: 2024-II</li>
+        <li>Docente: Andrés Bermúdez</li>
+    </ul>
+
+    <h2>Presentación de la guía</h2>
+<p>La Guía 1 de la asignatura Calidad de Software tiene como objetivo proporcionar a los estudiantes las herramientas y conocimientos fundamentales para la comprensión y aplicación de las distintas técnicas de pruebas de software. En este contexto, las pruebas son una actividad crucial para garantizar la calidad y fiabilidad de un sistema, abordando diferentes niveles como las pruebas unitarias, de integración, de sistema y pruebas funcionales y no funcionales. Este taller se centra en proporcionar experiencias prácticas que permitan a los estudiantes aplicar estos conceptos en escenarios reales de desarrollo de software.</p>
+
+
+
+
+    <h2>Objetivos de la guía</h2>
+    <ul>
+<li>Comprender los conceptos fundamentales de las pruebas de software: Familiarizarse con las diversas categorías de pruebas de software y su importancia dentro del ciclo de vida del desarrollo de software.</li>
+<li>Aplicar diferentes tipos de pruebas: Llevar a cabo pruebas unitarias, de integración y de sistema, con el objetivo de validar el correcto funcionamiento de los módulos del software.</li>
+<li>Desarrollar pruebas funcionales y no funcionales: Profundizar en la creación de pruebas que no solo validen las funcionalidades del sistema, sino también su rendimiento, seguridad y accesibilidad.</li>
+<li>Dominar herramientas para la automatización de pruebas: Aprender a utilizar herramientas y frameworks para la creación de pruebas automatizadas que optimicen el proceso de validación del software.</li>
+<li>Fomentar habilidades colaborativas en la realización de pruebas: Desarrollar la capacidad de trabajar en equipo para planificar, diseñar y ejecutar pruebas de forma eficiente y efectiva.</li>
+    </ul>
+
+    <h2>Contenidos</h2>
+    <ul>
+        <li>Unidad 2. Pruebas de software</li>
+        <li>Temas a desarrollar:</li>
+        <ul>
+            <li>Pruebas de software</li>
+            <li>Niveles de pruebas</li>
+            <li>Pruebas unitarias</li>
+            <li>Pruebas de integración</li>
+            <li>Pruebas de sistema</li>
+            <li>Pruebas funcionales</li>
+            <li>Pruebas No funcionales</li>
+        </ul>
+    </ul>
+    
+<h2>Instrucciones Generales</h2>
+<ul>
+    <li>Cada estudiante debe realizar 5 ejercicios:</li>
+    <ul>
+        <li>Los primeros tres ejercicios son comunes para todos los estudiantes y se centran en:
+            <ul>
+                <li>Pruebas Unitarias</li>
+                <li>Pruebas de Integración</li>
+                <li>Pruebas de Sistema</li>
+            </ul>
+        </li>
+        <li>Los últimos dos ejercicios son personalizados para cada estudiante y deben abordar diferentes tipos de pruebas:</li>
+        <ul>
+            <li>Uno debe ser una prueba funcional, que puede ser:
+                <ul>
+                    <li>Pruebas de Regresión</li>
+                    <li>Pruebas de Humo</li>
+                    <li>Pruebas de Aceptación del Usuario (UAT)</li>
+                    <li>Pruebas Exploratorias</li>
+                </ul>
+            </li>
+            <li>El otro debe ser una prueba no funcional, que puede ser:
+                <ul>
+                    <li>Pruebas de Rendimiento</li>
+                    <li>Pruebas de Carga</li>
+                    <li>Pruebas de Seguridad</li>
+                    <li>Pruebas de Accesibilidad</li>
+                </ul>
+            </li>
+        </ul>
+    </ul>
+</ul>
+
+
+
+    <h2>Actividades</h2>
+
+   <h2>Punto 1: Pruebas Unitarias</h2>
+<p>Las <strong>pruebas unitarias</strong> verifican el correcto funcionamiento de unidades individuales de código.</p>
+
+<h3>Ejemplo: Función Factorial</h3>
+<p>En este ejercicio, se creará una función que calcule el factorial de un número entero no negativo y se escribirán pruebas unitarias para verificar su funcionamiento.</p>
+
+<pre>
+<code>
+import pytest
+
+def factorial(n):
+    """Calcula el factorial de un número entero no negativo"""
+    if not isinstance(n, int):
+        raise TypeError("Input must be an integer")
+    if n < 0:
+        raise ValueError("Factorial is not defined for negative numbers")
+    if n == 0 or n == 1:
+        return 1
+    return n * factorial(n - 1)
+
+def test_factorial_valid_inputs():
+    assert factorial(0) == 1
+    assert factorial(1) == 1
+    assert factorial(5) == 120
+
+def test_factorial_edge_cases():
+    with pytest.raises(ValueError):
+        factorial(-1)
+    with pytest.raises(TypeError):
+        factorial("a")
+</code></pre>
+
+
+<h3>Ejercicio Práctico 1 (Común para todos)</h3>
+<p>Crea una función para verificar si un número es un <strong>número de Armstrong</strong>. Luego, escribe pruebas unitarias para verificar su correcto funcionamiento, incluyendo casos límite y entradas no válidas.</p>
+<p>Un número de Armstrong es un número que es igual a la suma de sus propios dígitos cada uno elevado a la potencia del número de dígitos. Por ejemplo, el número 153 es un número de Armstrong porque:</p>
+<pre>
+1^3 + 5^3 + 3^3 = 153
+</pre>
+
+ <h2>Punto 2: Pruebas de Integración</h2>
+<p>Las <strong>pruebas de integración</strong> se centran en verificar la interacción entre diferentes módulos o componentes de un sistema. Su objetivo es asegurar que los módulos, que han sido probados de forma independiente, trabajen correctamente cuando se integren entre sí. En otras palabras, estas pruebas validan que los diferentes partes de la aplicación funcionan bien juntas, garantizando la correcta transferencia de datos y la ejecución fluida de procesos que dependen de varios componentes del sistema.</p>
+
+<p>Las pruebas de integración son especialmente útiles cuando el software se compone de varios servicios, como bases de datos, servidores web, APIs, entre otros, que deben trabajar en conjunto. En este tipo de pruebas, no solo se verifica la correcta ejecución de cada módulo por separado, sino también cómo estos módulos interactúan entre sí.</p>
+
+<h3>Ejemplo de Prueba de Integración: Sistema de Gestión de Usuarios</h3>
+<p>En el ejemplo a continuación, creamos un sistema sencillo para gestionar usuarios. Utilizamos SQLAlchemy como ORM (Object-Relational Mapper) para interactuar con la base de datos. La prueba verifica que el sistema sea capaz de crear un usuario y almacenar sus datos en una base de datos en memoria de forma adecuada.</p>
+<p>El código de la prueba de integración utiliza una base de datos en memoria, por lo que no es necesario configurar un servidor de base de datos real. A continuación se presenta cómo interactúan las distintas partes del sistema (el modelo <code>User</code>, el <code>UserManager</code> y la base de datos):</p>
+
+<ol>
+    <li>El modelo <code>User</code> define la estructura de los usuarios en la base de datos.</li>
+    <li>La clase <code>UserManager</code> contiene la lógica para crear usuarios.</li>
+    <li>La prueba asegura que, al crear un usuario, la base de datos recibe y almacena correctamente la información.</li>
+</ol>
+
+<pre><code class="language-python">
+import pytest
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+
+# Base de datos simulada
+Base = declarative_base()
+
+class User(Base):
+    __tablename__ = 'users'
+    id = Column(Integer, primary_key=True)
+    username = Column(String, unique=True, nullable=False)
+    email = Column(String, unique=True, nullable=False)
+
+class UserManager:
+    def __init__(self, session):
+        self.session = session
+
+    def create_user(self, username, email):
+        user = User(username=username, email=email)
+        self.session.add(user)
+        self.session.commit()
+        return user
+
+# Configuración de la base de datos en memoria
+@pytest.fixture
+def db_session():
+    engine = create_engine('sqlite:///:memory:')
+    Base.metadata.create_all(engine)
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    yield session
+    session.close()
+
+def test_user_management_integration(db_session):
+    user_manager = UserManager(db_session)
+    user = user_manager.create_user("testuser", "test@example.com")
+    
+    # Verifica que el usuario haya sido creado correctamente
+    assert user is not None
+    assert user.username == "testuser"
+    assert user.email == "test@example.com"
+</code></pre>
+
+<h3>Ejercicio Práctico 2 (Común para todos)</h3>
+<p>Desarrolla una función que maneje la <strong>autenticación de usuarios</strong> en tu sistema de gestión de usuarios. El sistema debería permitir a los usuarios registrarse con un nombre de usuario y correo electrónico. Luego, realiza <strong>pruebas de integración</strong> para verificar que:</p>
+<ul>
+    <li>La creación de un usuario se realiza correctamente.</li>
+    <li>El sistema pueda autenticar al usuario correctamente, por ejemplo, comprobando su nombre de usuario y correo electrónico.</li>
+</ul>
+<p>Es importante que las pruebas aseguren que las interacciones entre los distintos componentes (como el registro y la autenticación de usuarios) funcionan correctamente.</p>
+</pre>
+
+   
+  <h2>Punto 3: Pruebas de Sistema</h2>
+<p>Las <strong>pruebas de sistema</strong> verifican el funcionamiento completo del sistema en su totalidad. Estas pruebas se realizan para asegurar que todos los módulos y componentes del sistema trabajen juntos como se espera. Las pruebas de sistema son típicamente realizadas después de las pruebas de integración y aseguran que la aplicación funcione correctamente en un entorno realista.</p>
+<p>Este tipo de pruebas cubre los aspectos funcionales y no funcionales de un sistema, incluyendo la seguridad, el rendimiento y la usabilidad, y se llevan a cabo a un nivel más alto que las pruebas unitarias o de integración.</p>
+
+<h3>Ejemplo: Sistema de Compras en Línea</h3>
+<p>A continuación se presenta un ejemplo de un sistema de compras en línea que consta de una clase <code>Product</code> (producto) y una clase <code>ShoppingCart</code> (carrito de compras). La prueba de sistema verifica que el proceso de compra funcione correctamente, agregando productos al carrito y realizando el cálculo del total correctamente.</p>
+
+<pre>
+<code>
+class Product:
+    def __init__(self, name, price, stock):
+        self.name = name
+        self.price = price
+        self.stock = stock
+
+class ShoppingCart:
+    def __init__(self):
+        self.items = []
+        self.total = 0
+
+    def add_item(self, product, quantity):
+        if product.stock >= quantity:
+            self.items.append((product, quantity))
+            self.total += product.price * quantity
+            product.stock -= quantity
+            return True
+        return False
+
+def test_complete_purchase_system_flow():
+    laptop = Product("Laptop", 1000, 10)
+    mouse = Product("Mouse", 50, 20)
+    
+    cart = ShoppingCart()
+    assert cart.add_item(laptop, 1) == True
+    assert cart.add_item(mouse, 2) == True
+    
+    # Verifica que el total sea correcto
+    assert cart.total == 1100
+    
+    # Verifica que el stock de los productos se actualice correctamente
+    assert laptop.stock == 9
+    assert mouse.stock == 18
+</code>
+</pre>
+
+<h3>Ejercicio Práctico 3 (Común para todos):</h3>
+<p>Desarrolla un sistema de compras que permita a un usuario añadir productos al carrito y realizar una compra. Crea pruebas de sistema que verifiquen que el flujo de compra se complete correctamente y que el stock de los productos se actualice adecuadamente.</p>
+
+<h1>EJERCICIOS DIFERENCIADOS POR ESTUDIANTE</h1>
+
+<h2>Puntos 4 y 5 : Pruebas Funcionales y No Funcionales </h2>
+
+<h3>Estudiante 1-Código:13572122103 </h3>
+
+<h4>Prueba funcional (Pruebas de Aceptación del Usuario - UAT):</h4>
+<p><strong>Definición:</strong> Las <strong>pruebas de aceptación del usuario (UAT)</strong> verifican que el sistema cumpla con las expectativas del usuario final y con los requisitos de negocio establecidos. Estas pruebas son realizadas generalmente por los usuarios para asegurarse de que el sistema satisfaga sus necesidades.</p>
+
+<p><strong>Ejemplo: Sistema de Gestión de Tareas (UAT)</strong></p>
+<pre>
+class TaskManager:
+    def __init__(self):
+        self.tasks = []
+
+    def add_task(self, title):
+        task = {"title": title, "completed": False}
+        self.tasks.append(task)
+        return task
+
+    def complete_task(self, task):
+        task["completed"] = True
+        return task
+
+def test_task_management_uat():
+    task_manager = TaskManager()
+    
+    # Agregar tarea
+    task = task_manager.add_task("Tarea de ejemplo")
+    assert task["title"] == "Tarea de ejemplo"
+    assert task["completed"] == False
+    
+    # Completar tarea
+    task = task_manager.complete_task(task)
+    assert task["completed"] == True
+</pre>
+
+<p><strong>Ejercicio a realizar:</strong> Desarrolla un sistema de gestión de tareas donde los usuarios puedan agregar, editar y eliminar tareas. Realiza pruebas de aceptación del usuario (UAT) que aseguren que el flujo de trabajo de tareas es intuitivo y cumple con los requisitos del usuario.</p>
+
+<h4>Prueba no funcional (Pruebas de Rendimiento):</h4>
+<p><strong>Definición:</strong> Las <strong>pruebas de rendimiento</strong> son realizadas para medir el comportamiento del sistema bajo una carga particular. Esto incluye medir la rapidez, la estabilidad y la capacidad de respuesta del sistema. El objetivo es asegurarse de que el sistema pueda manejar el volumen esperado de usuarios y transacciones sin sufrir caídas o pérdida de rendimiento.</p>
+
+<p><strong>Ejemplo: Servicio de Búsqueda de Tareas</strong></p>
+<pre>
+import time
+
+class TaskSearchService:
+    def __init__(self, tasks):
+        self.tasks = tasks
+
+    def search_tasks(self, query):
+        return [task for task in self.tasks if query.lower() in task["title"].lower()]
+
+# Datos de ejemplo
+tasks = [{"title": f"Tarea {i}", "completed": False} for i in range(1, 1001)]
+
+# Crear el servicio de búsqueda
+search_service = TaskSearchService(tasks)
+
+# Medir el rendimiento de la búsqueda
+start_time = time.time()
+search_service.search_tasks("Tarea 100")
+end_time = time.time()
+
+print(f"Tiempo de búsqueda: {end_time - start_time} segundos")
+</pre>
+
+<p><strong>Ejercicio a realizar:</strong> Implementa un servicio que permita realizar búsquedas de tareas por su título o descripción. Realiza pruebas de rendimiento para asegurarte de que el sistema pueda manejar al menos 1000 búsquedas concurrentes sin que el rendimiento se degrade significativamente.</p>
+
+<hr>
+
+<h3>Estudiante 2: Código: 12242214637 </h3>
+
+<h4>Prueba funcional (Pruebas de Humo):</h4>
+<p><strong>Definición:</strong> Las <strong>pruebas de humo</strong> son pruebas rápidas y básicas que verifican si las funciones más críticas de la aplicación funcionan como se espera. Se realizan para asegurarse de que el sistema está listo para pruebas más exhaustivas.</p>
+
+<p><strong>Ejemplo: Aplicación Web CRUD de Usuarios</strong></p>
+<pre>
+class UserManager:
+    def __init__(self):
+        self.users = []
+
+    def create_user(self, username, email):
+        user = {"username": username, "email": email}
+        self.users.append(user)
+        return user
+
+    def delete_user(self, username):
+        self.users = [user for user in self.users if user["username"] != username]
+
+def test_user_manager_smoke():
+    user_manager = UserManager()
+    
+    # Crear usuario
+    user = user_manager.create_user("user1", "user1@example.com")
+    assert user["username"] == "user1"
+    
+    # Eliminar usuario
+    user_manager.delete_user("user1")
+    assert len(user_manager.users) == 0
+</pre>
+
+<p><strong>Ejercicio a realizar:</strong> Desarrolla una pequeña aplicación web para la gestión de usuarios (con CRUD básico). Realiza pruebas de humo para asegurarte de que las funciones más críticas, como la creación y eliminación de usuarios, funcionen correctamente.</p>
+
+<h4>Prueba no funcional (Pruebas de Seguridad):</h4>
+<p><strong>Definición:</strong> Las <strong>pruebas de seguridad</strong> se enfocan en identificar vulnerabilidades y riesgos en una aplicación. Esto incluye verificar que el sistema sea resistente a ataques maliciosos como inyecciones SQL, Cross-Site Scripting (XSS), y otros tipos de vulnerabilidades.</p>
+
+<p><strong>Ejemplo: Validación de entrada en una API REST</strong></p>
+<pre>
+import re
+
+class UserService:
+    def __init__(self):
+        self.users = []
+
+    def add_user(self, username):
+        if re.search(r"[';--]", username):  # Verificar inyecciones SQL
+            raise ValueError("Input contains invalid characters.")
+        self.users.append(username)
+
+def test_sql_injection_prevention():
+    user_service = UserService()
+
+    # Inyección SQL simulada
+    try:
+        user_service.add_user("user'; DROP TABLE users; --")
+    except ValueError:
+        assert True  # Se debe capturar el error
+    else:
+        assert False  # La inyección no debería ser permitida
+</pre>
+
+<p><strong>Ejercicio a realizar:</strong> Realiza pruebas de seguridad para una API REST. Asegúrate de que el sistema rechace solicitudes maliciosas, como inyecciones SQL, y que esté protegido contra ataques XSS.</p>
+
+<hr>
+
+<h3>Estudiante 3: Código:12242211861 </h3>
+
+<h4>Prueba funcional (Pruebas Exploratorias):</h4>
+<p><strong>Definición:</strong> Las <strong>pruebas exploratorias</strong> son pruebas realizadas sin un plan de pruebas formal, en las que los testers exploran la aplicación y prueban sus funcionalidades de manera ad-hoc. Se utilizan para descubrir problemas inesperados en el flujo de trabajo.</p>
+
+<p><strong>Ejemplo: Plataforma de Mensajería Instantánea</strong></p>
+<pre>
+class MessagingPlatform:
+    def __init__(self):
+        self.messages = []
+
+    def send_message(self, user, message):
+        self.messages.append({"user": user, "message": message})
+
+def test_send_message():
+    platform = MessagingPlatform()
+    
+    # Enviar mensaje
+    platform.send_message("user1", "Hola, ¿cómo estás?")
+    assert len(platform.messages) == 1
+    assert platform.messages[0]["message"] == "Hola, ¿cómo estás?"
+</pre>
+
+<p><strong>Ejercicio a realizar:</strong> Diseña una plataforma de mensajería instantánea y realiza pruebas exploratorias para encontrar posibles errores o inconsistencias en el flujo de envío y recepción de mensajes, la gestión de contactos y las notificaciones.</p>
+
+<h4>Prueba no funcional (Pruebas de Accesibilidad):</h4>
+<p><strong>Definición:</strong> Las <strong>pruebas de accesibilidad</strong> verifican que una aplicación sea accesible para personas con discapacidades. Se enfoca en garantizar que los usuarios con problemas visuales, auditivos o de otro tipo puedan interactuar con el sistema correctamente.</p>
+
+<p><strong>Ejemplo: Página Web de Tienda en Línea</strong></p>
+<pre>
+class ShoppingPage:
+    def __init__(self):
+        self.items = [{"name": "Laptop", "price": 1000}, {"name": "Mouse", "price": 50}]
+    
+    def get_item(self, name):
+        return next((item for item in self.items if item["name"] == name), None)
+
+def test_accessibility():
+    shopping_page = ShoppingPage()
+    
+    # Verificar accesibilidad
+    item = shopping_page.get_item("Laptop")
+    assert item is not None
+    assert item["name"] == "Laptop"
+</pre>
+
+<p><strong>Ejercicio a realizar:</strong> Realiza pruebas de accesibilidad en una página web de una tienda en línea para garantizar que sea accesible para personas con discapacidades visuales (por ejemplo, usando lectores de pantalla).</p>
+
+<hr>
+
+<h3>Estudiante 4: Código: 12242216590</h3>
+
+<h4>Prueba funcional (Pruebas de Regresión):</h4>
+<p><strong>Definición:</strong> Las <strong>pruebas de regresión</strong> verifican que los cambios realizados en una aplicación (como nuevas funcionalidades o correcciones) no hayan afectado negativamente a las funcionalidades existentes.</p>
+
+<p><strong>Ejemplo: Calculadora</strong></p>
+<pre>
+class Calculator:
+    def add(self, a, b):
+        return a + b
+    
+    def subtract(self, a, b):
+        return a - b
+
+def test_calculator():
+    calc = Calculator()
+    
+    # Sumar
+    assert calc.add(2, 3) == 5
+    # Restar
+    assert calc.subtract(5, 3) == 2
+</pre>
+
+<p><strong>Ejercicio a realizar:</strong> Desarrolla una calculadora básica con funciones de suma, resta, multiplicación y división. Realiza pruebas de regresión para asegurarte de que los cambios futuros no afecten las funcionalidades existentes.</p>
+
+<h4>Prueba no funcional (Pruebas de Escalabilidad):</h4>
+<p><strong>Definición:</strong> Las <strong>pruebas de escalabilidad</strong> aseguran que un sistema pueda manejar incrementos en la carga, ya sea aumentando el número de usuarios o el volumen de datos, sin perder rendimiento.</p>
+
+<p><strong>Ejemplo: Sistema de Gestión de Archivos</strong></p>
+<pre>
+import time
+
+class FileSystem:
+    def __init__(self):
+        self.files = []
+
+    def add_file(self, file):
+        self.files.append(file)
+
+def test_scalability():
+    fs = FileSystem()
+    
+    start_time = time.time()
+    for i in range(10000):
+        fs.add_file(f"file_{i}.txt")
+    end_time = time.time()
+    
+    print(f"Tiempo para añadir 10000 archivos: {end_time - start_time} segundos")
+</pre>
+
+<p><strong>Ejercicio a realizar:</strong> Implementa un sistema de gestión de archivos y realiza pruebas de escalabilidad para asegurar que el sistema puede manejar un volumen creciente de archivos sin que el rendimiento disminuya.</p>
+
+<h1>Instrucciones de Entrega</h1>
+<p><strong>1. Crear un repositorio en GitHub (u otra plataforma de Git):</strong></p>
+<ul>
+    <li>Cada estudiante debe crear un repositorio en GitHub (o en cualquier otra plataforma de Git que prefiera, como GitLab o Bitbucket).</li>
+    <li>El nombre del repositorio debe seguir la siguiente convención: <em>&lt;Nombre_Completo_Estudiante&gt;_Taller_Pruebas_Software</em>, por ejemplo, "Juan_Perez_Taller_Pruebas_Software".</li>
+    <li>Una vez creado el repositorio, debe ser configurado para que sea <strong>público</strong> o <strong>privado</strong> , pero asegúrense de que yo pueda acceder al repositorio sin problemas.</li>
+</ul>
+
+<p><strong>2. Estructura del repositorio:</strong></p>
+<ul>
+    <li>El repositorio debe contener un archivo <strong>README.md</strong> con una breve descripción de lo que contiene el proyecto.</li>
+    <li>Dentro del repositorio, los estudiantes deben crear carpetas para cada uno de los ejercicios, que pueden ser nombradas como <em>ejercicio_1</em>, <em>ejercicio_2</em>, etc.</li>
+    <li><strong>Cada carpeta debe contener:</strong></li>
+    <ul>
+        <li>El código fuente para el ejercicio correspondiente.</li>
+        <li>Un archivo <em>test.py</em> o el archivo adecuado dependiendo del lenguaje, que contenga las pruebas relacionadas.</li>
+        <li>Cualquier otro archivo necesario para ejecutar o probar el código.</li>
+    </ul>
+</ul>
+
+<p><strong>3. Entrega del Repositorio:</strong></p>
+<ul>
+    <li>Una vez que se haya completado el repositorio, los estudiantes deben compartir el enlace del repositorio conmigo para poder revisarlo. El enlace debe ser enviado a través de la plataforma indicada para la entrega.</li>
+    <li>Asegúrate de que tu repositorio esté actualizado, y que todos los ejercicios estén completos y funcionando correctamente.</li>
+</ul>
+
+<p><strong>4. Instrucciones para la entrega (para GitHub):</strong></p>
+<ul>
+    <li>En GitHub, ve a tu repositorio y haz clic en el botón verde <strong>"Code"</strong>.</li>
+    <li>Copia el enlace HTTPS (algo como <code>https://github.com/usuario/repositorio.git</code>).</li>
+    <li>Comparte este enlace conmigo para la revisión.</li>
+</ul>
+
+<p><strong>5. Fecha de Entrega:</strong></p>
+<ul>
+    <li>La fecha de entrega final será el <strong>30 de Noviembre 11:00 AM</strong>.</li>
+    <li>No olvides hacer "commit" de todos los cambios antes de la fecha de entrega y asegurarte de que todo el código esté correctamente documentado.</li>
+</ul>
+
+    
+    
+    <h2>Referencias</h2>
+    <ul>
+        <li>Beizer, B. (1995). Software Testing Techniques. Van Nostrand Reinhold.</li>
+        <li>Myers, G. J. (2004). The Art of Software Testing. Wiley.</li>
+        <li>Pressman, R. S. (2014). Software Engineering: A Practitioner's Approach. McGraw-Hill.</li>
+    </ul>
+
+</body>
+</html>
