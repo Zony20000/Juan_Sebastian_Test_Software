@@ -1,7 +1,4 @@
 def ArmStrong(num:int):
-    # Convertimos en cadena esto lo que permite trabajarse por parte
-    if not isinstance(num,int):
-        return "Solo se aceptan Numeros"
     
     if num == 0:
         return "Numero diferente de Cero"
@@ -9,10 +6,13 @@ def ArmStrong(num:int):
     if num < 0:
         return "Numero positivo necesario"
 
+    # Convertimos en cadena esto lo que permite trabajarse por parte
     convert = str(num)
+
     #Se declara el array donde se almacenaran los datos
     digits = []
 
+    #Para evitar que el programa se interrumpa de forma abruta lo tratamos de forma controlada en caso de errores. Donde verificamos que si contenga un numero
     try:
         for numero in convert:
             #usamos int para la conversion a numero

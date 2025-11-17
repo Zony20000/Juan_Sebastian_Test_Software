@@ -9,14 +9,25 @@
 
 from functools import reduce
 
+# ---------------- Explciacion de Uso ------------------------
+# Reduce: Permite tomar valor por valor, con el fin de dar un orden estandar a los numeros u elementos dentro de un array
+
+#Funcion de Suma con array
+
 def plus(a:[]):
     return sum(a)
+
+#Funcion de Resta con array
 
 def minus(a:[]):
     return reduce(lambda c,b: c-b,a)
 
+# Funcion de Multiplicacion con array
+
 def times(a:[]):
     return reduce(lambda c,b: c*b,a)
+
+# Funcion de Division con array
 
 def divide_by(a:[]):
     try:

@@ -1,7 +1,10 @@
 import pytest
+import random
 from App.exercise_random import *
 
 #Pruebas de Regresion
+
+# En este caso no usamos un valor random sino se genera una funcion por cada caso de prueba
 
 def test_plus_positive():
     numbers = [1,2]
@@ -110,7 +113,12 @@ def test_divide_by_zero():
 # Pruebas de Rendimiento con benchmark
 # Para usar benchmark debe usar pip install pytest-benchmark
 
-datos= [1,2,3,4,5,6,7,8,9,0]
+# En este caso volvemos a establecer valores para probar y con benchmark lo repetimos varias veces y devuelve el tiempo que le toma realizar la prueba
+
+datos= []
+# esto es un aditamento para romper las funciones
+for i in range(11):
+    datos.append(random.randint(-2222222222222222222,2222222222222222222))
 
 def test_plus_fast(benchmark):
 
